@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">答题游戏</string>
+    <string name="tab_menu_player_text">主页</string>
+    <string name="tab_menu_friend_text">好友</string>
+    <string name="tab_menu_shop_text">商店</string>
+    <string name="tab_menu_setting_text">设置</string>
+
+
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player_page_content"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="名字"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/player_name"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/title"
+            android:layout_alignStart="@+id/title" />
+
+        <TextView
+            android:text="金币"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/title"
+            android:layout_alignEnd="@+id/title"
+            android:id="@+id/textView4"
+            android:layout_alignBottom="@+id/player_name"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:text="Fight!"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/text_yellow"
+            android:gravity="center"
+            android:shadowColor="@color/text_blue"
+            android:shadowRadius="3.0"
+            android:shadowDx="10.0"
+            android:shadowDy="10.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="83dp" />
+
+        <TextView
+            android:text="答题游戏"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:shadowColor="@color/text_blue"
+            android:shadowRadius="3.0"
+            android:shadowDx="10.0"
+            android:shadowDy="10.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>
