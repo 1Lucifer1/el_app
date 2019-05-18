@@ -1,0 +1,48 @@
+package duizhanzhuye;
+
+import java.util.Random;
+
+public class Jiqimoshi {
+	public static void main(String[] args) {
+		Random random = new Random();
+		int s = random.nextInt(100);
+		char result = ' ';
+		if(s>=0&&s<10) {
+			result = 'A';
+		}
+		else if(s>=10&&s<30) {
+			result = 'B';
+		}
+		else if(s>=30&&s<50) {
+			result = 'C';
+		}
+		else {
+			result = 'D';
+		}
+		long usedTime;
+		if(s>=0&&s<10) {
+			usedTime = 10;
+		}
+		else if(s>=10&&s<15) {
+			usedTime = 11;
+		}
+		else if(s>=15&&s<30) {
+			usedTime = 12;
+		}
+		else if(s>=30&&s<60) {
+			usedTime = 13;
+		}
+		else if(s>=60&&s<75) {
+			usedTime = 14;
+		}
+		else if(s>=75&&s<90) {
+			usedTime = 15;
+		}
+		else {
+			usedTime = random.nextInt(10);
+		}
+		System.out.println(result);
+		System.out.println(usedTime);
+
+}
+}
