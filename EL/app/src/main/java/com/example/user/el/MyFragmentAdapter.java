@@ -47,10 +47,10 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case mainpage.PAGE_ONE:
-                fragment = playerPage;
+                fragment = friendPage;
                 break;
             case mainpage.PAGE_TWO:
-                fragment = friendPage;
+                fragment = playerPage;
                 break;
             case mainpage.PAGE_THREE:
                 fragment = shopPage;
