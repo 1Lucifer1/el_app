@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -16,6 +18,9 @@ public class playerPage extends Fragment {
     private TextView playerMoney;
     private int money;
     private String name;
+    private ButtonEffect startGame;
+
+
     public playerPage(){
     }
     @Override
@@ -27,6 +32,7 @@ public class playerPage extends Fragment {
         playerMoney = (TextView) view.findViewById(R.id.money);
         playerName.setText(String.format(getString(R.string.player_name),name));
         playerMoney.setText(String.format(getString(R.string.player_money),money));
+        startGame= (ButtonEffect) view.findViewById(R.id.startGame);
 
         return view;
     }

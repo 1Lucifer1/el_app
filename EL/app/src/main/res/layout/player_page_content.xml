@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:text="Fight!"
+        <com.example.user.el.ButtonEffect
+            android:id="@+id/startGame"
+            android:text="@string/start_game"
             android:textSize="50sp"
             android:textStyle="bold|italic"
             android:textColor="@color/text_yellow"
@@ -18,12 +19,11 @@
             android:shadowRadius="3.0"
             android:shadowDx="10.0"
             android:shadowDy="10.0"
-            android:layout_width="wrap_content"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="83dp" />
+            android:layout_marginBottom="80dp" />
 
         <TextView
             android:text="答题游戏"
@@ -34,7 +34,7 @@
             android:shadowRadius="3.0"
             android:shadowDx="10.0"
             android:shadowDy="10.0"
-            android:layout_width="wrap_content"
+            android:layout_width="500sp"
             android:layout_height="wrap_content"
             android:id="@+id/title"
             android:layout_centerVertical="true"
@@ -44,8 +44,9 @@
             android:text="@string/player_name"
             android:background="@drawable/textview_background"
             android:textSize="30sp"
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="50sp"
+            android:layout_height="100sp"
             android:id="@+id/name"
             android:drawableLeft="@mipmap/ic_launcher"
             android:layout_alignParentTop="true"
@@ -54,11 +55,12 @@
 
         <TextView
             android:text="@string/player_money"
+            android:gravity="center_vertical"
             android:drawableLeft="@mipmap/money"
             android:background="@drawable/textview_background"
             android:textSize="30sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
             android:id="@+id/money"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"

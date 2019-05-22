@@ -2,6 +2,7 @@ package com.example.user.el;
 
 import android.content.pm.ActivityInfo;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioButton;
@@ -29,6 +30,12 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //隐藏标题栏
+        ActionBar actionbar = getSupportActionBar();
+        if(actionbar != null){
+            actionbar.hide();
+        }
 
         mAdapter = new MyFragmentAdapter(getSupportFragmentManager());
         bindViews();
