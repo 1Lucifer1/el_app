@@ -46,10 +46,10 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.rb_player:
+                    case R.id.rb_friend:
                         vpager.setCurrentItem(PAGE_ONE);
                         break;
-                    case R.id.rb_friend:
+                    case R.id.rb_player:
                         vpager.setCurrentItem(PAGE_TWO);
                         break;
                     case R.id.rb_shop:
@@ -89,11 +89,10 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
         if (state == 2) {
             switch (vpager.getCurrentItem()) {
                 case PAGE_ONE:
-                    rb_player.setChecked(true);
-
+                    rb_friend.setChecked(true);
                     break;
                 case PAGE_TWO:
-                    rb_friend.setChecked(true);
+                    rb_player.setChecked(true);
                     break;
                 case PAGE_THREE:
                     rb_shop.setChecked(true);

@@ -4,6 +4,7 @@
     <color name="bg_white">#FFFFFF</color>
     <color name="bg_topbar">#FCFCFC</color>
     <color name="bg_gray">#00F1F1F1</color>
+    <color name="bg_blue">#40BAF8</color>
     <color name="transparent">#00FFFFFF</color>
 
     <color name="text_gray">#8D7A71</color>
@@ -15,4 +16,6 @@
     <color name="reveal_color">#FFFFFF</color>
     <color name="bottom_color">#3086E4</color>
     <color name="bottom_bg">#40BAF8</color>
+    <color name="bbutton_danger_edge">#ffd43f3a</color>
+    <color name="bbutton_danger_disabled_edge">#a5d43f3a</color>
 </resources>

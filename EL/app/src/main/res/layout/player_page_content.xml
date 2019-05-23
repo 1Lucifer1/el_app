@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/player_page_content"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/background"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -11,6 +14,7 @@
         <com.example.user.el.ButtonEffect
             android:id="@+id/startGame"
             android:text="@string/start_game"
+            android:background="@drawable/round_button"
             android:textSize="50sp"
             android:textStyle="bold|italic"
             android:textColor="@color/text_yellow"
@@ -27,8 +31,9 @@
 
         <TextView
             android:text="答题游戏"
-            android:textSize="50sp"
+            android:textSize="75sp"
             android:textStyle="bold|italic"
+            android:textColor="@color/text_white"
             android:gravity="center"
             android:shadowColor="@color/text_blue"
             android:shadowRadius="3.0"
@@ -41,29 +46,51 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="@string/player_name"
-            android:background="@drawable/textview_background"
-            android:textSize="30sp"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="100sp"
-            android:id="@+id/name"
-            android:drawableLeft="@mipmap/ic_launcher"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
             android:text="@string/player_money"
-            android:gravity="center_vertical"
-            android:drawableLeft="@mipmap/money"
             android:background="@drawable/textview_background"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/money"
+            android:textColor="@color/text_white"
             android:textSize="30sp"
             android:layout_width="wrap_content"
-            android:layout_height="100sp"
+            android:layout_height="60sp"
             android:id="@+id/money"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="@string/player_name"
+                android:textColor="@color/text_white"
+                android:background="@drawable/textview_background"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/name"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/player_image"
+                android:gravity="center_horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/name" />
+
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
