@@ -45,7 +45,7 @@ public class ButtonEffect extends Button {
         colorPaint = new Paint();
         bottomPaint = new Paint();
         colorPaint.setColor(getResources().getColor(R.color.reveal_color));
-        bottomPaint.setColor(getResources().getColor(R.color.bottom_color));
+        bottomPaint.setColor(getResources().getColor(R.color.shop_button_color));
     }
 
 

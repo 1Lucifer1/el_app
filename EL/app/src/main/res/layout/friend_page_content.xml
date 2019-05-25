@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/friend_page_content"
     android:orientation="vertical"
-    android:background="@mipmap/background"
+    android:background="@mipmap/background1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
