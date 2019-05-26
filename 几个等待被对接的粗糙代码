@@ -1,0 +1,71 @@
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+class MyTask1 extends TimerTask{
+	private int time = 0;
+	private boolean circum = true;
+	public void run() {
+		time = time+1;
+		if(time==2) {
+		    System.out.println("Time is up!");
+			cancel();
+		}
+		
+	}
+}//次线程——一个计时器，15秒后出现“Time is up"
+
+public class DuiZhan {
+	public static void main (String[] args) {
+		//("1 secdvdvvffvfv?:a 1:b 2:c 3:d 4:a;2 cdvgrbdb?:a 1:b 2:c 3:d 4:c;3 gregrg?:a 1:b 2:c 3:d 4:b")
+	    String text = "1 secdvdvvffvfv?:a 1:b 2:c 3:d 4:a;2 cdvgrbdb?:a 1:b 2:c 3:d 4:c;3 gregrg?:a 1:b 2:c 3:d 4:b";
+	    String problem[] = text.split(";");
+	    //下面那个循环是为了我自己测试做的每道题答题情况，你可以把一些得到数值的步骤删除，关于问题，选项，正确答案，有单独建立一个类
+	    for(int i=0;i<problem.length;i++) {
+		    String items[] = problem[i].split(":");
+		    String question = items[0];//问题
+		    String answer1 = items[1];//选项
+		    String answer2 = items[2];
+		    String answer3 = items[3];
+		    String answer4 = items[4];
+		    System.out.println(question);
+		    System.out.println(answer1+" "+answer2+" "+answer3+" "+answer4);
+		    String right = items[5];//正确答案
+		    
+		    Timer timer = new Timer();//之后开始操作，首先开始计时
+		    timer.schedule(new MyTask1(),0,15000);
+		    System.out.println("Please enter your answer!");
+		    int grade = 0;
+		    long startTime = System.currentTimeMillis();
+		    MyTask1 circumstance = new MyTask1() ;
+		    Scanner scan = new Scanner(System.in);
+		    String answer = scan.next();//得到输入的答案
+		    
+		    long endTime = System.currentTimeMillis();
+			long usedTime = (endTime-startTime)/1000;//得到所用时间
+			
+			if(answer==right) {
+				grade = grade+getGrade(usedTime);//答对了的分数变化
+			}
+	        System.out.println(answer);
+	        System.out.println(usedTime);
+		    System.out.println(grade);
+		    }
+		}
+
+	//分数变化的规则方法
+		public static int getGrade(long n) {
+			if(n<=5) {
+				return 300;
+			}
+			else if(n>5&&n<=10) {
+				return 200;
+			}
+			else {
+				return 100;
+			}
+		}
+}
