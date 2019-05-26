@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shop_page_content"
     android:background="@mipmap/background3"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -10,24 +11,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <Button
+            android:text="购买记录"
+            android:layout_width="180sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shop_history_button"
+            android:textSize="40sp"
+            android:id="@+id/shop_history"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/shop_image"
             android:id="@+id/imageView"
-            android:layout_centerVertical="true"
+            android:cropToPadding="false"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <com.example.user.el.ButtonEffect
-            android:text="购买"
-            android:textSize="50sp"
-            android:background="@drawable/shop_button"
-            android:layout_width="200sp"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/purchase"
-            android:layout_marginBottom="170dp"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_centerHorizontal="true" />
+            app:srcCompat="@mipmap/payment"
+            android:id="@+id/payment"
+            android:visibility="invisible"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/shop_history"
+            android:layout_alignStart="@+id/shop_history"
+            android:layout_marginTop="20dp" />
+
+        <com.example.user.el.ButtonEffect
+        android:text="购买"
+        android:textSize="50sp"
+        android:stateListAnimator="@null"
+        android:background="@drawable/shop_button"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/purchase"
+        android:elevation="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 </LinearLayout>

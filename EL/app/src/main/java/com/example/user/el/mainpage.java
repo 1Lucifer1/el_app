@@ -1,13 +1,18 @@
 package com.example.user.el;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,20 +20,28 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChangeListener{
     //UI Objects
     private ViewPager vpager;
     private MyFragmentAdapter mAdapter;
 
+    public static MediaPlayer mp;
+    private AudioManager am;//AudioManager引用
+
     private RadioGroup rg_tab_bar;
     private RadioButton rb_player;
     private RadioButton rb_shop;
     private RadioButton rb_setting;
     private RadioButton rb_friend;
+
+
 
     //几个代表页面的常量
     public static final int PAGE_ONE = 0;
@@ -48,9 +61,25 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
             actionbar.hide();
         }
 
+        try{
+            am= (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+            mp = MediaPlayer.create(mainpage.this, R.raw.thousand_sakura);
+            mp.setLooping(true);
+            mp.start();
+            Toast.makeText(getApplicationContext(), "播放背景音", Toast.LENGTH_SHORT).show();
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(getApplicationContext(), "播放背景音失败", Toast.LENGTH_SHORT).show();
+        } catch (IllegalStateException e) {
+            Toast.makeText(getApplicationContext(), "播放背景音失败", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
         mAdapter = new MyFragmentAdapter(getSupportFragmentManager());
         bindViews();
         rb_player.setChecked(true);
+
 
         //重写ViewPager页面切换的处理方法
         rg_tab_bar.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
@@ -72,7 +101,10 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
                 }
             }
         });
+
     }
+
+
     private void bindViews() {
         vpager = (ViewPager) findViewById(R.id.vpager);
         vpager.setAdapter(mAdapter);
@@ -136,4 +168,17 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
 
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onPause();
+        mp.pause();
+    }
+
+    protected void onDestroy() {// 销毁Activity之前，所做的事
+        super.onDestroy();
+        mp.stop();
+        mp.release();
+    }
+
 }

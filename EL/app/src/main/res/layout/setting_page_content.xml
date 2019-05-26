@@ -10,74 +10,31 @@
         android:layout_height="match_parent"
         android:id="@+id/mod">
 
-        <TextView
-            android:text="音效"
-            android:textColor="@color/text_white"
+        <Button
+            android:text="寻求协助"
             android:textSize="40sp"
-            android:layout_width="wrap_content"
+            android:id="@+id/help"
+            android:textColor="@color/bg_white"
+            android:background="@drawable/creator_button"
+            android:gravity="center"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:id="@+id/voiceEffect"
-            android:layout_below="@+id/music"
-            android:layout_alignLeft="@+id/music"
-            android:layout_alignStart="@+id/music" />
-
-        <TextView
-            android:text="音乐"
-            android:textColor="@color/text_white"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/music"
-            android:textSize="40sp"
-            android:layout_marginTop="99dp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/musicTurnOn"
-            android:layout_toLeftOf="@+id/musicTurnOn" />
-
-        <CheckBox
-            android:text="开"
-            android:textColor="@color/text_white"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/voiceEffectTurnOn"
-            android:layout_above="@+id/creator"
-            android:layout_alignLeft="@+id/musicTurnOn"
-            android:layout_alignStart="@+id/musicTurnOn" />
-
-        <CheckBox
-            android:text="开"
-            android:textColor="@color/text_white"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/musicTurnOn"
-            android:layout_alignTop="@+id/music"
+            android:layout_marginBottom="30dp"
+            android:layout_above="@+id/leave"
             android:layout_centerHorizontal="true" />
 
-        <CheckBox
-            android:text="关"
-            android:textColor="@color/text_white"
+        <Switch
             android:textSize="40sp"
+            android:textColor="@color/bg_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/voiceEffectTurnOff"
-            android:layout_alignBaseline="@+id/voiceEffect"
-            android:layout_alignBottom="@+id/voiceEffect"
-            android:layout_alignRight="@+id/creator"
-            android:layout_alignEnd="@+id/creator" />
-
-        <CheckBox
-            android:text="关"
-            android:textColor="@color/text_white"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/musicTurnOff"
-            android:layout_alignBaseline="@+id/musicTurnOn"
-            android:layout_alignBottom="@+id/musicTurnOn"
-            android:layout_alignLeft="@+id/voiceEffectTurnOff"
-            android:layout_alignStart="@+id/voiceEffectTurnOff" />
+            android:id="@+id/voiceEffect"
+            android:text="音效"
+            android:layout_marginBottom="30dp"
+            android:switchMinWidth="30dp"
+            android:layout_above="@+id/music"
+            android:layout_centerHorizontal="true"
+            android:checked="false" />
 
         <Button
             android:text="开发者名单"
@@ -85,12 +42,39 @@
             android:id="@+id/creator"
             android:textColor="@color/bg_white"
             android:background="@drawable/creator_button"
-            android:layout_marginTop="23dp"
             android:gravity="center"
             android:layout_width="250sp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/voiceEffect"
+            android:layout_marginBottom="36dp"
+            android:layout_above="@+id/help"
             android:layout_centerHorizontal="true" />
+
+        <Switch
+            android:text="音乐"
+            android:textSize="40sp"
+            android:textColor="@color/bg_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/music"
+            android:layout_marginBottom="62dp"
+            android:switchMinWidth="30dp"
+            android:layout_above="@+id/creator"
+            android:layout_alignLeft="@+id/voiceEffect"
+            android:layout_alignStart="@+id/voiceEffect" />
+
+        <Button
+            android:text="退出登录"
+            android:textSize="40sp"
+            android:id="@+id/leave"
+            android:textColor="@color/bg_white"
+            android:background="@drawable/creator_button"
+            android:gravity="center"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="69dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/help"
+            android:layout_alignStart="@+id/help" />
 
     </RelativeLayout>
 

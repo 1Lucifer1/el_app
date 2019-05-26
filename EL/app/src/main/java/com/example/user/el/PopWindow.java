@@ -73,31 +73,12 @@ public class PopWindow {
         fromCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File dir = new File(Environment.getExternalStorageDirectory(),"pictures");
-                if(dir.exists()){
-                    dir.mkdirs();
-                }
-                currentImageFile = new File(dir,System.currentTimeMillis() + ".jpg");
-                if(!currentImageFile.exists()){
-                    try {
-                        currentImageFile.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                it.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(currentImageFile));
-                activity.startActivityForResult(it, Activity.DEFAULT_KEYS_DIALER);
-                mainpage.setImageFile(currentImageFile);
                 popWindow.dismiss();
             }
         });
         fromStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 popWindow.dismiss();
             }
         });

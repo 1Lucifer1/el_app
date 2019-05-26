@@ -103,7 +103,7 @@
         </LinearLayout>
 
         <TextView
-            android:text="答题游戏"
+            android:text="@string/title_name"
             android:textSize="75sp"
             android:textStyle="bold|italic"
             android:textColor="@color/text_white"
