@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/setting_page_content"
-    android:background="@mipmap/background"
+    android:background="@mipmap/background4"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,28 +22,6 @@
             android:layout_alignLeft="@+id/music"
             android:layout_alignStart="@+id/music" />
 
-        <com.example.user.el.ButtonEffect
-            android:text="开发者名单"
-            android:textSize="40sp"
-            android:id="@+id/creator"
-            android:layout_marginTop="100dp"
-            android:gravity="center"
-            android:layout_width="200sp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/voiceEffectTurnOff"
-            android:layout_centerHorizontal="true" />
-
-        <CheckBox
-            android:text="关"
-            android:textColor="@color/text_white"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/voiceEffectTurnOff"
-            android:layout_alignTop="@+id/voiceEffect"
-            android:layout_toRightOf="@+id/creator"
-            android:layout_toEndOf="@+id/creator" />
-
         <TextView
             android:text="音乐"
             android:textColor="@color/text_white"
@@ -55,18 +33,6 @@
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/musicTurnOn"
             android:layout_toLeftOf="@+id/musicTurnOn" />
-
-        <CheckBox
-            android:text="关"
-            android:textColor="@color/text_white"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/musicTurnOff"
-            android:layout_alignBaseline="@+id/musicTurnOn"
-            android:layout_alignBottom="@+id/musicTurnOn"
-            android:layout_alignLeft="@+id/voiceEffectTurnOff"
-            android:layout_alignStart="@+id/voiceEffectTurnOff" />
 
         <CheckBox
             android:text="开"
@@ -87,6 +53,43 @@
             android:layout_height="wrap_content"
             android:id="@+id/musicTurnOn"
             android:layout_alignTop="@+id/music"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:text="关"
+            android:textColor="@color/text_white"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/voiceEffectTurnOff"
+            android:layout_alignBaseline="@+id/voiceEffect"
+            android:layout_alignBottom="@+id/voiceEffect"
+            android:layout_alignRight="@+id/creator"
+            android:layout_alignEnd="@+id/creator" />
+
+        <CheckBox
+            android:text="关"
+            android:textColor="@color/text_white"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/musicTurnOff"
+            android:layout_alignBaseline="@+id/musicTurnOn"
+            android:layout_alignBottom="@+id/musicTurnOn"
+            android:layout_alignLeft="@+id/voiceEffectTurnOff"
+            android:layout_alignStart="@+id/voiceEffectTurnOff" />
+
+        <Button
+            android:text="开发者名单"
+            android:textSize="40sp"
+            android:id="@+id/creator"
+            android:textColor="@color/bg_white"
+            android:background="@drawable/creator_button"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/voiceEffect"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

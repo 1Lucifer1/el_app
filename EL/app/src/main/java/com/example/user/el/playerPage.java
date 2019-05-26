@@ -1,12 +1,16 @@
 package com.example.user.el;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -18,8 +22,10 @@ public class playerPage extends Fragment {
     private TextView playerMoney;
     private int money;
     private String name;
-    private ButtonEffect startGame;
-
+    private Button startGame;
+    private ImageView playerImage;
+    private PopWindow popWindow;
+    private Activity activity = getActivity();
 
     public playerPage(){
     }
@@ -32,7 +38,17 @@ public class playerPage extends Fragment {
         playerMoney = (TextView) view.findViewById(R.id.money);
         playerName.setText(String.format(getString(R.string.player_name),name));
         playerMoney.setText(String.format(getString(R.string.player_money),money));
-        startGame= (ButtonEffect) view.findViewById(R.id.startGame);
+        startGame= (Button) view.findViewById(R.id.startGame);
+        playerImage = (ImageView) view.findViewById(R.id.player_image);
+        popWindow=new PopWindow(getActivity(),playerImage, activity);
+        playerImage.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                popWindow.initPopWindow(v);
+                if (ContextCompat.checkSelfPermission(getActivity() , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                }
+            }
+        });
 
         return view;
     }
