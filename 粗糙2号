@@ -1,0 +1,133 @@
+class Problemer {
+	static String[] Question;//问题
+	static String[] aAnswer;//答案a
+	static String[] bAnswer;//答案b
+	static String[] cAnswer;//答案c
+	static String[] dAnswer;//答案d
+	static String[] RightAnswer;//正确答案
+	//定义一卡车静态变量
+	public static void setProblemItems(){
+		//获取长字符串
+		String text = "1 secdvdvvffvfv?:a 1:b 2:c 3:d 4:c;2 cdvgrbdb?:a 1:b 2:c 3:d 4:d;3 gregrg?:a 1:b 2:c 3:d 4:a";
+	    String problem[] = text.split(";");
+	    Question = new String[problem.length];
+	    aAnswer = new String[problem.length];
+	    bAnswer = new String[problem.length];
+	    cAnswer = new String[problem.length];
+	    dAnswer = new String[problem.length];
+	    RightAnswer = new String[problem.length];
+	    //对数组进行赋值
+	    for(int i=0;i<problem.length;i++) {
+	    	String ProblemItems[] = problem[i].split(":");
+	    	Question[i] = ProblemItems[0];
+	    	aAnswer[i] = ProblemItems[1];
+	    	bAnswer[i] = ProblemItems[2];
+	    	cAnswer[i] = ProblemItems[3];
+	    	dAnswer[i] = ProblemItems[4];
+	    	RightAnswer[i] = ProblemItems[5];
+	    }
+	    
+	}
+
+}
+class book{
+	static String bookName;
+	static int bookPrice;
+	static String bookText;
+	public static void setBookName(String s) {
+		bookName = s;
+	}
+	public static void setBookPrice(int n) {
+		bookPrice = n;
+	}
+	public static void setBookText(String str) {
+		bookText = str;
+	}
+	static String getBookText() {
+		return bookText;
+	}
+	static int getBookPrice() {
+		return bookPrice;
+	}
+	static String getBookName() {
+		return bookName;
+	}
+}
+public class shop {
+	public static int currentMoney = 2000;
+	public static void buyBook(int n) {
+		int money = getMoney();
+		if(n==1) {
+			money = money - 300;
+		}
+		else if(n==2) {
+			money = money - 200;
+	    }
+	    else if(n==3) {
+	    	money = money - 250;
+	    }
+	    else {
+	    	money = money;
+	    }
+		currentMoney = money;
+	}
+	public static int getMoney() {
+		return currentMoney;
+	}
+	public static void showMoney() {
+		System.out.println(currentMoney);
+	}
+	public static void main(String[] args) {
+		buyBook(1);
+		currentMoney = getMoney();
+		showMoney();
+		book bookOne = new book();
+		bookOne.setBookName("<<Head First Java>>");
+		bookOne.setBookPrice(200);
+		bookOne.setBookText("This is a very good book!");
+		System.out.println(bookOne.getBookPrice());
+		System.out.println(bookOne.getBookText());
+		System.out.println(bookOne.getBookName());
+	}
+	  
+
+}
+class Gamer{
+	static String[] noList;
+	static String[] nameList;
+	static String[] gradeList;
+	//定义三个静态变量
+	public static void setList() {
+		String Text = "1:luzhangchi:260;2:liuyulin:230;3:lzh:160";
+	    String[] Items = Text.split(";");
+	    noList = new String[Items.length];
+	    nameList = new String[Items.length];
+	    gradeList = new String[Items.length];
+	    for(int i=0;i<Items.length;i++) {
+	   	    String[] No = Items[i].split(":");
+	        noList[i] = No[0];
+	        nameList[i] = No[1];
+	        gradeList[i] = No[2];
+	    }
+	}
+	//存入数组的方法，得到序号，姓名，分数三个数组。
+	public static int getItemsLength() {
+		String Text = "1:luzhangchi:260;2:liuyulin:230;3:lzh:160";
+	    String[] Items = Text.split(";");
+	    return Items.length;
+		
+	}
+	//得到数组内元素的方法，输入数组名，索引，得到元素。为了你们能方便一点，也可以不用8.
+	public static String getList(String s,int n) {
+		if(s=="noList") {
+			return noList[n];
+		}
+		else if(s=="nameList") {
+			return nameList[n];
+		}
+		else {
+			return gradeList[n];
+		}
+		
+	}
+}
