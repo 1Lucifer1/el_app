@@ -38,6 +38,7 @@ public class test {
         else if (loginCode.equals("2")) {
             System.out.println("密码错了！");
         }
+
     }
     private static void findConnect() throws IOException , InterruptedException{
         String opName;
