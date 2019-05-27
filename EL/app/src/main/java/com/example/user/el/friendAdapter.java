@@ -5,24 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 
 /**
- * Created by user on 2019/5/23.
+ * Created by user on 2019/5/27.
  */
 
-public class creatorAdapter extends BaseAdapter {
-    private LinkedList<creator> mData;
+public class friendAdapter extends BaseAdapter {
+
+    private LinkedList<friend> mData;
     private Context mContext;
 
-    public creatorAdapter(LinkedList<creator> mData, Context mContext){
+    public friendAdapter(LinkedList<friend> mData, Context mContext){
         this.mData = mData;
         this.mContext = mContext;
     }
-
     @Override
     public int getCount() {
         return mData.size();
@@ -40,13 +39,13 @@ public class creatorAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(mContext).inflate(R.layout.creator_list,parent,false);
-        TextView name = (TextView) convertView.findViewById(R.id.creator_name);
-        TextView work = (TextView) convertView.findViewById(R.id.creator_work);
+        convertView = LayoutInflater.from(mContext).inflate(R.layout.friend_list,parent,false);
+        TextView name = (TextView) convertView.findViewById(R.id.friend_name);
+        TextView number = (TextView) convertView.findViewById(R.id.friend_number);
+        TextView grade = (TextView) convertView.findViewById(R.id.friend_grade);
         name.setText(mData.get(position).name);
-        work.setText(mData.get(position).work);
-        name.setEnabled(false);
-        work.setEnabled(false);
+        number.setText(mData.get(position).number);
+        grade.setText(mData.get(position).grade);
         return convertView;
     }
 }

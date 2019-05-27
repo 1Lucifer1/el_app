@@ -35,7 +35,8 @@
             android:id="@+id/rb_setting"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_menu_setting"
-            android:text="@string/tab_menu_setting_text" />
+            android:text="@string/tab_menu_setting_text"
+            android:checked="false" />
 
     </RadioGroup>
 

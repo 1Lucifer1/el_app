@@ -37,10 +37,10 @@ public class creatorList extends Activity {
         mContext = creatorList.this;
         creator_list_content = (ListView) findViewById(R.id.creator_list_content);
         mData = new LinkedList<creator>();
-        mData.add(new creator("lyl","UI"));
-        mData.add(new creator("lzh","UI"));
-        mData.add(new creator("lzc","network"));
-        mData.add(new creator("fxc","back"));
+        mData.add(new creator("刘育麟","前端"));
+        mData.add(new creator("李泽浩","前端"));
+        mData.add(new creator("陆张驰","网络交互"));
+        mData.add(new creator("冯鑫泽","后端"));
         mAdapter = new creatorAdapter((LinkedList<creator>) mData, mContext);
         creator_list_content.setAdapter(mAdapter);
 
