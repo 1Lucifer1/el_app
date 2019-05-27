@@ -1,0 +1,100 @@
+import okhttp3.FormBody;
+import java.util.Scanner;
+import java.io.IOException;
+
+//建立问题库
+class Problem {
+    public String problem[] = new String[6];
+    public String aAnswer[] = new String[6];
+    public String bAnswer[] = new String[6];
+    public String cAnswer[] = new String[6];
+    public String dAnswer[] = new String[6];
+    public String rightAnswer[] = new String[6];
+}
+
+public class DuiZhan {
+    public static void main(String[] args)throws IOException, InterruptedException {
+        Post problemText = new Post();
+        FormBody formBody = new FormBody.Builder()
+                .add("name", "ShuoTu")
+                .build();
+        String text = problemText.post("http://shuotu.vip/el/login/", formBody);
+        //获取整个问题有关的字符串
+        
+        String Items[] = text.split(";");
+        Problem question = new Problem();
+        for (int i = 0; i < Items.length; i++) {
+            String[] items = Items[i].split(":");
+            question.problem[i] = items[0];
+            question.aAnswer[i] = items[1];
+            question.bAnswer[i] = items[2];
+            question.cAnswer[i] = items[3];
+            question.dAnswer[i] = items[4];
+            question.rightAnswer[i] = items[5];
+        }
+        //得到有关信息的字符串
+        double timepast = 0.0;
+        String answer = "z";
+        String cir1 = "no";
+        String cir2 = "no";
+        
+        Get qwe = new Get();
+        String a =qwe.run("http://shuotu.vip/test/");
+        int grade = Integer.parseInt(a);
+        //获取本人的分数
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Now time is up! Please enter your answer!");
+        answer = scan.next();
+        
+        for (int j = 0; j < 30; j++) {
+            timepast = timepast + 0.5;
+            try {
+                Thread.currentThread().sleep(500);
+            } catch (Exception e) {
+            }
+            ;
+            if (answer == "z") {
+                cir1 = "no";
+                Post p = new Post();
+                FormBody formBody2 = new FormBody.Builder()
+                        .add( "name","no")
+                        .build();
+                cir2 = p.post("http://shuotu.vip/el/login/", formBody2);
+            } else {
+                cir1 = "yes";
+                Post p = new Post();
+                FormBody formBody2 = new FormBody.Builder()
+                        .add("name", answer)
+                        .build();
+                cir2 = p.post("http://shuotu.vip/el/login/", formBody2);
+            }
+            //每0.5s请求一次信息，传入个人的情况（是否做答，得到对方的情况）
+            
+            if (cir1 == "yes" && cir2 == "yes") {
+                System.out.println("Now go on next question!");
+                break;
+            }
+            //有情况确定二者是否可以进入下一题
+        }
+        if(cir1 != "yes"||cir2 !="yes"){
+            System.out.println("Time is up!");
+        }
+        if(answer==question.rightAnswer[0]) {
+            if (timepast < 5) grade = grade + 300;
+            else if (timepast >= 5 && timepast < 10) grade = grade + 200;
+            else grade = grade + 100;
+        }
+        
+        Post p = new Post();
+        FormBody formBody3 = new FormBody.Builder()
+                .add( "name",""+grade)
+                .build();
+        int grade2 = Integer.parseInt(p.post("http://shuotu.vip/el/login/", formBody3));
+        //传入自己的分数，得到对方的分数。
+        int grade1 = grade;
+        System.out.println(grade1);
+        System.out.println(grade2);
+    }
+}
+
