@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -44,7 +46,7 @@ public class playerPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         name=registerPage.getPlayer();
-        money=0;
+        money=mainpage.playerMoney;
         View view = inflater.inflate(R.layout.player_page_content, container, false);
         playerName = (TextView) view.findViewById(R.id.name);
         playerMoney = (TextView) view.findViewById(R.id.money);
@@ -52,6 +54,8 @@ public class playerPage extends Fragment {
         playerMoney.setText(String.format(getString(R.string.player_money),money));
         startGame= (Button) view.findViewById(R.id.startGame);
         playerImage = (ImageView) view.findViewById(R.id.player_image);
+
+
 
 
         poolMap = new HashMap<String, Integer>();
@@ -79,8 +83,11 @@ public class playerPage extends Fragment {
                 if(settingPage.checkVoiceEffect){
                     pool.play(poolMap.get("voice1"), 1.0f, 1.0f, 0, 0, 1.0f);
                 }
+                Intent start = new Intent(getActivity(),gamePage.class);
+                startActivity(start);
             }
         });
         return view;
     }
+
 }

@@ -11,13 +11,21 @@
         android:textSize="50sp"
         android:gravity="center"
         android:textColor="@color/text_white"
-        android:background="@color/bg_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
+    <TextView
+        android:text=""
+        android:background="@color/text_white"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/textView10" />
+
     <ListView
         android:id="@+id/friend_list_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@color/text_white"
+        android:headerDividersEnabled="false" />
 </LinearLayout>

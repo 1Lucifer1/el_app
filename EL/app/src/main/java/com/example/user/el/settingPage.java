@@ -105,20 +105,16 @@ public class settingPage extends Fragment implements CompoundButton.OnCheckedCha
             case R.id.voiceEffect:
                 if(compoundButton.isChecked()) {
                     checkVoiceEffect = true;
-                    Toast.makeText(getActivity(),"打开音效",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     checkVoiceEffect = false;
-                    Toast.makeText(getActivity(),"关闭音效",Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.music:
                 if(compoundButton.isChecked()) {
                     mainpage.mp.start();
-                    Toast.makeText(getActivity(),"打开音乐",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(getActivity(),"关闭音乐",Toast.LENGTH_SHORT).show();
                     mainpage.mp.pause();
                 }
                 break;

@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChangeListener{
     //UI Objects
     private ViewPager vpager;
@@ -42,9 +41,7 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
     private RadioButton rb_setting;
     private RadioButton rb_friend;
 
-    //data
-    String playerName = registerPage.getPlayer();
-
+    public static int playerMoney=123;
 
     //几个代表页面的常量
     public static final int PAGE_ONE = 0;
@@ -177,11 +174,15 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
         super.onPause();
         mp.pause();
     }
-
+    @Override
     protected void onDestroy() {// 销毁Activity之前，所做的事
         super.onDestroy();
         mp.stop();
         mp.release();
     }
-
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        mp.start();
+    }
 }

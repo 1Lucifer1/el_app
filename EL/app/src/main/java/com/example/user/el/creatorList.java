@@ -43,7 +43,6 @@ public class creatorList extends Activity {
         mData.add(new creator("冯鑫泽","后端"));
         mAdapter = new creatorAdapter((LinkedList<creator>) mData, mContext);
         creator_list_content.setAdapter(mAdapter);
-
     }
 
     @Override

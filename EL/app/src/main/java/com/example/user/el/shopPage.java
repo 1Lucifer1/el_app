@@ -1,5 +1,6 @@
 package com.example.user.el;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +25,8 @@ public class shopPage extends Fragment {
     private Button purchase;
     private Button history;
     private ImageView payment;
+    private TextView playerMoney;
+    private int money = mainpage.playerMoney;
 
     private SoundPool pool;
     private Map<String, Integer> poolMap;
@@ -35,6 +40,8 @@ public class shopPage extends Fragment {
         purchase = (Button) view.findViewById(R.id.purchase);
         history = (Button) view.findViewById(R.id.shop_history);
         payment = (ImageView) view.findViewById(R.id.payment);
+        playerMoney = (TextView) view.findViewById(R.id.money);
+        playerMoney.setText(String.format(getString(R.string.player_money),money));
 
         poolMap = new HashMap<String, Integer>();
         // 实例化SoundPool，大小为3
@@ -48,6 +55,7 @@ public class shopPage extends Fragment {
                 if(settingPage.checkVoiceEffect){
                     pool.play(poolMap.get("voice1"), 1.0f, 1.0f, 0, 0, 1.0f);
                 }
+                Toast.makeText(getActivity(), "购买成功", Toast.LENGTH_SHORT).show();
                 payment.setVisibility(View.VISIBLE);
             }
         });
@@ -66,6 +74,9 @@ public class shopPage extends Fragment {
                 if(settingPage.checkVoiceEffect){
                     pool.play(poolMap.get("voice1"), 1.0f, 1.0f, 0, 0, 1.0f);
                 }
+                Intent storage;
+                storage = new Intent(getActivity(), goodsStorage.class);
+                startActivity(storage);
             }
         });
         return view;
