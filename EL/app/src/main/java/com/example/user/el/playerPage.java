@@ -44,7 +44,7 @@ public class playerPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         name=registerPage.getPlayer();
-        money=123;
+        money=0;
         View view = inflater.inflate(R.layout.player_page_content, container, false);
         playerName = (TextView) view.findViewById(R.id.name);
         playerMoney = (TextView) view.findViewById(R.id.money);

@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChangeListener{
     //UI Objects
     private ViewPager vpager;
@@ -41,6 +42,8 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
     private RadioButton rb_setting;
     private RadioButton rb_friend;
 
+    //data
+    String playerName = registerPage.getPlayer();
 
 
     //几个代表页面的常量
