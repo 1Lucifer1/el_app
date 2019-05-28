@@ -40,6 +40,8 @@ public class registerPage extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -109,8 +111,9 @@ public class registerPage extends AppCompatActivity {
                 if (loginCode.equals("0")) {
                     Toast.makeText(getApplicationContext(), "登录成功！你好， " + loginName + "！", Toast.LENGTH_SHORT).show();
                     player = account.getText().toString();
-                    Intent intentMainpage;
-                    intentMainpage = new Intent(registerPage.this, mainpage.class);
+                    Intent intentMainpage = new Intent();
+                    intentMainpage.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intentMainpage.setClass(registerPage.this, mainpage.class);
                     startActivity(intentMainpage);
                 } else if (loginCode.equals("2")) {
                     Toast.makeText(getApplicationContext(), "找不到你的用户名呢！", Toast.LENGTH_SHORT).show();

@@ -14,7 +14,9 @@
 
         <service android:name=".AudioService" />
         <service android:name=".MadiaService" />
-
+        <service
+            android:name=".FindEnemy"
+            android:label="@string/app_name" />
         <activity android:name=".registerPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

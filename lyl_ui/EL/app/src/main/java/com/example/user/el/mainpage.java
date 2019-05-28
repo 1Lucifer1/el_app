@@ -41,7 +41,7 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
     private RadioButton rb_setting;
     private RadioButton rb_friend;
 
-    public static int playerMoney=123;
+    public static int playerMoney;
 
     //几个代表页面的常量
     public static final int PAGE_ONE = 0;
@@ -72,8 +72,13 @@ public class mainpage extends AppCompatActivity  implements ViewPager.OnPageChan
         } catch (IllegalStateException e) {
             Toast.makeText(getApplicationContext(), "播放背景音失败", Toast.LENGTH_SHORT).show();
         }
-
-
+        try {
+            playerMoney = GetInfo.getGold(registerPage.getPlayer());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         mAdapter = new MyFragmentAdapter(getSupportFragmentManager());

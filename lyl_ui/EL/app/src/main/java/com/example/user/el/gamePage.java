@@ -3,6 +3,7 @@ package com.example.user.el;
 
         import android.content.Context;
         import android.content.DialogInterface;
+        import android.content.Intent;
         import android.content.pm.ActivityInfo;
         import android.graphics.Color;
         import android.os.Handler;
@@ -18,8 +19,12 @@ package com.example.user.el;
         import android.widget.ImageView;
         import android.widget.ProgressBar;
         import android.widget.TextView;
+
+        import java.io.IOException;
         import java.util.Timer;
         import java.util.TimerTask;
+
+        import okhttp3.FormBody;
 
 class Problem {
     public String problem[] = new String[6];
@@ -56,6 +61,9 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener{
     private boolean gameOver=false;
     private static final int roundNumber=3;
     Problem question = new Problem();
+    Post p = new Post();
+    Get g = new Get();
+
     public gamePage() {
     }
 
@@ -70,7 +78,25 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener{
         if(actionbar != null){
             actionbar.hide();
         }
-
+        Get g = new Get();
+        String text = null;
+        try {
+            text = g.run(FindOp.roomUrl + "getquestion/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String Items[] = text.split("///");
+        Problem question = new Problem();
+        for (int i = 0; i < Items.length; i++) {
+            String[] items =
+                    Items[i].split("#");
+            question.problem[i] = items[0];
+            question.aAnswer[i] = items[1];
+            question.bAnswer[i] = items[2];
+            question.cAnswer[i] = items[3];
+            question.dAnswer[i] = items[4];
+            question.rightAnswer[i] = items[5];
+        }
         A=(Button)findViewById(R.id.button);
         B=(Button)findViewById(R.id.button2);
         C=(Button)findViewById(R.id.button3);
@@ -94,20 +120,7 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener{
         RoundText.setText("第"+(Round+1)+"回合"+'\n'+"共"+roundNumber+"回合");
         i=20;
 
-        String text = "1+1=:1:2:3:4:B;1+2=:1:2:3:4:C;1+3=:1:2:3:4:D";// 測試使用的字符串
-        //获取整个问题有关的字符串
 
-        String Items[] = text.split(";");
-
-        for (int i = 0; i < Items.length; i++) {
-            String[] items = Items[i].split(":");
-            question.problem[i] = items[0];
-            question.aAnswer[i] = items[1];
-            question.bAnswer[i] = items[2];
-            question.cAnswer[i] = items[3];
-            question.dAnswer[i] = items[4];
-            question.rightAnswer[i] = items[5];
-        }
 
         Problem.setText(question.problem[Round]);
         A.setText(question.aAnswer[Round]);
@@ -140,26 +153,77 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener{
             case R.id.button:
                 if(key.equals("A")){Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())+nowScore));A.setBackgroundColor(Color.parseColor("#66ff33"));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);finished=true;correct=true;}
                 else {Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())-50));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);A.setBackgroundColor(Color.parseColor("#ff0099"));finished=true;correct=false;}
-                if(finished==true&&otherFinished==true)i=0;
+                if(finished==true&&otherFinished==true){
+                    i=0;
+                    try {
+                        g.run(FindOp.roomUrl+"next/");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case R.id.button2:
                 if(key.equals("B")){Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())+nowScore));B.setBackgroundColor(Color.parseColor("#66ff33"));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);finished=true;correct=true;}
                 else {Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())-50));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);B.setBackgroundColor(Color.parseColor("#ff0099"));finished=true;correct=false;}
-                if(finished==true&&otherFinished==true)i=0;
+                if(finished==true&&otherFinished==true){
+                    ;
+                    try {
+                        g.run(FindOp.roomUrl+"next/");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case R.id.button3:
-                if(key.equals("C")){Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())+nowScore));C.setBackgroundColor(Color.parseColor("#66ff33"));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);finished=true;correct=true;}
-                else {Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())-50));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);C.setBackgroundColor(Color.parseColor("#ff0099"));finished=true;correct=false;}
-                if(finished==true&&otherFinished==true)i=0;
+                if(key.equals("C")){
+                    Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())+nowScore));
+                    C.setBackgroundColor(Color.parseColor("#66ff33"));
+                    A.setEnabled(false);
+                    B.setEnabled(false);
+                    C.setEnabled(false);
+                    D.setEnabled(false);
+                    finished=true;correct=true;
+                }
+                else {
+                    Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())-50));
+                    A.setEnabled(false);
+                    B.setEnabled(false);
+                    C.setEnabled(false);
+                    D.setEnabled(false);
+                    C.setBackgroundColor(Color.parseColor("#ff0099"));
+                    finished=true;correct=false;
+                }
+                if(finished==true&&otherFinished==true){
+                    i=0;
+                    try {
+                        g.run(FindOp.roomUrl+"next/");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case R.id.button4:
                 if(key.equals("D")){Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())+nowScore));D.setBackgroundColor(Color.parseColor("#66ff33"));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);finished=true;correct=true;}
                 else {Score1.setText(String.valueOf(Integer.parseInt(Score1.getText().toString())-50));A.setEnabled(false);B.setEnabled(false);C.setEnabled(false);D.setEnabled(false);D.setBackgroundColor(Color.parseColor("#ff0099"));finished=true;correct=false;}
-                if(finished==true&&otherFinished==true)i=0;
+                if(finished==true&&otherFinished==true) {
+                    i = 0;
+                    try {
+                        g.run(FindOp.roomUrl+"next/");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
+
             case R.id.textView:
-                if(gameOver==true)
+                if(gameOver==true){
+                    Intent intentGamepage = new Intent();
+                    intentGamepage.setClass(gamePage.this, mainpage.class);
+                    startActivity(intentGamepage);
                     finish();
+                }
+
+
         }
     }
     private Handler mHandler = new Handler() {
@@ -222,6 +286,37 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener{
             public void run() {
                 if (i > 0) {  //加入判断不能小于0
                     i=i-0.5;
+                    if (finished==false){
+                        FormBody formBody = new FormBody.Builder()
+                                .add("name", registerPage.getPlayer())
+                                .add("process", "no")
+                                .build();
+                        try {
+                            String info = p.post(FindOp.roomUrl + "judge/", formBody);
+
+                            if (info == "no") {
+                                otherFinished = false;
+                            } else {
+                                Score2.setText(info);
+                                otherFinished = true;
+                            }
+                        }catch (Exception e){}
+                    }
+                    else {
+                        FormBody formBody = new FormBody.Builder()
+                                .add("name", registerPage.getPlayer())
+                                .add("process", Score1.getText().toString())
+                                .build();
+                        try {
+                            String info = p.post(FindOp.roomUrl + "judge/", formBody);
+                            if (info == "no") {
+                                otherFinished = false;
+                            } else {
+                                Score2.setText(info);
+                                otherFinished = true;
+                            }
+                        }catch (Exception e){}
+                    }
                     Message message = mHandler.obtainMessage();
                     message.arg1 = (int)i;
                     mHandler.sendMessage(message);

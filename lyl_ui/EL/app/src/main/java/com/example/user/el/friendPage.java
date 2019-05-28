@@ -3,12 +3,14 @@ package com.example.user.el;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class friendPage extends Fragment {
     private Context mContext;
     private friendAdapter mAdapter = null;
     private ListView friendList;
-
+    private String[] list;
     public friendPage(){
     }
 
@@ -34,9 +36,17 @@ public class friendPage extends Fragment {
         mContext = getActivity();
         friendList = (ListView) view.findViewById(R.id.friend_list_content);
         mData = new LinkedList<friend>();
+        Get g = new Get();
+        try {
+            String info = g.run("http:shuotu.vip/el/getotherinfo/");
+            list = info.split("///");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(int a =1; a<=list.length; a++){
+            mData.add(new friend(a,list[a-1].split("::")[0], Integer.parseInt(list[a-1].split("::")[1])));
+        }
 
-        mData.add(new friend(0,"lyl",1000));
-        mData.add(new friend(1,"lzc",-1000));
         mAdapter = new friendAdapter((LinkedList<friend>) mData, mContext);
         friendList.setAdapter(mAdapter);
 
