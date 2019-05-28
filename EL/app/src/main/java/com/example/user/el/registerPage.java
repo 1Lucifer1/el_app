@@ -49,7 +49,8 @@ public class registerPage extends AppCompatActivity{
 
         register = (Button) findViewById(R.id.registeration);
         enroll = (Button) findViewById(R.id.enrollment);
-
+         Thread threadDetectIfOnline = new Thread();
+        threadDetectIfOnline.run();
 
     }
 

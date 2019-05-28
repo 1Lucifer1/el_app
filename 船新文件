@@ -56,18 +56,14 @@ public class DuiZhan {
             ;
             if (answer == "z") {
                 cir1 = "no";
-                Post p = new Post();
-                FormBody formBody2 = new FormBody.Builder()
-                        .add( "name","no")
-                        .build();
-                cir2 = p.post("http://shuotu.vip/el/login/", formBody2);
             } else {
                 cir1 = "yes";
                 Post p = new Post();
                 FormBody formBody2 = new FormBody.Builder()
-                        .add("name", answer)
-                        .build();
-                cir2 = p.post("http://shuotu.vip/el/login/", formBody2);
+                    .add( "name",name)
+                    .add( "process","no")
+                    .build();
+                 cir2 = p.post("http://shuotu.vip/el/login/", formBody2);
             }
             //每0.5s请求一次信息，传入个人的情况（是否做答，得到对方的情况）
             
