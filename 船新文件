@@ -21,10 +21,10 @@ public class DuiZhan {
         String text = problemText.post("http://shuotu.vip/el/login/", formBody);
         //获取整个问题有关的字符串
         
-        String Items[] = text.split(";");
+        String Items[] = text.split("$");
         Problem question = new Problem();
         for (int i = 0; i < Items.length; i++) {
-            String[] items = Items[i].split(":");
+            String[] items = Items[i].split("#");
             question.problem[i] = items[0];
             question.aAnswer[i] = items[1];
             question.bAnswer[i] = items[2];

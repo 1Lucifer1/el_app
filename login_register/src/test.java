@@ -5,19 +5,18 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class test {
-    static String url = "http://shuotu.vip/";
+    static String url = "http://127.0.0.1:8000/el/";
     static String loginName = "";
     static String loginPassword = "";
 
     public static void main (String[] avgs) throws IOException, InterruptedException{
-        System.out.println("你妈的 快点给老子登录！");
-        Scanner scan = new Scanner(System.in);
-        System.out.print("账号： ");
-        loginName = scan.next();
-        System.out.print("密码： ");
-        loginPassword = scan.next();
-        scan.close();
-        login();
+        Post p = new Post();
+        FormBody formBody = new FormBody.Builder()
+                .add("login_name",loginName)
+                .add("login_password",loginPassword)
+                .build();
+        String room = p.post(url+"contest/", formBody);
+        System.out.println(room);
     }
     private static void login()throws IOException, InterruptedException{
         Post p = new Post();
@@ -25,7 +24,7 @@ public class test {
                 .add("login_name",loginName)
                 .add("login_password",loginPassword)
                 .build();
-        String loginCode = p.post(url+"game01/login/", formBody);
+        String loginCode = p.post(url+"", formBody);
         System.out.println(loginCode);
         if (loginCode.equals("0")) {
             System.out.println("登录成功！");
