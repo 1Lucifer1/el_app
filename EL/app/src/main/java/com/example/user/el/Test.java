@@ -20,7 +20,7 @@ class Problem {
 }
 public class Test {
         static String url = "http://127.0.0.1:8000/el/";
-        static String loginName = "123";
+        static String loginName = "3123";
         static String loginPassword = "";
         static String[] Question;//问题
         static String[] aAnswer;//答案a
