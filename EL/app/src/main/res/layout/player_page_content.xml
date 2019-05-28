@@ -17,9 +17,9 @@
             android:background="@drawable/round_button"
             android:textSize="50sp"
             android:textStyle="bold|italic"
-            android:textColor="@color/text_yellow"
+            android:textColor="@color/text_white"
             android:gravity="center"
-            android:shadowColor="@color/text_blue"
+            android:shadowColor="@color/text_gray"
             android:shadowRadius="3.0"
             android:shadowDx="10.0"
             android:shadowDy="10.0"
@@ -66,7 +66,6 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:background="@color/bg_white"
                 android:layout_height="match_parent"
                 app:srcCompat="@mipmap/ic_launcher"
                 android:id="@+id/player_image"
@@ -76,47 +75,58 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignBottom="@+id/name" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:background="@color/bg_white"
-                android:layout_height="match_parent"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/imageView4"
-                android:gravity="center_horizontal"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignBottom="@+id/name" />
+        </LinearLayout>
 
-            <ImageView
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:background="@color/bg_white"
                 android:layout_height="match_parent"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/imageView3"
-                android:gravity="center_horizontal"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignBottom="@+id/name" />
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="223dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/title1"
+                    android:id="@+id/imageView6"
+                    android:layout_weight="0.04"/>
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    app:srcCompat="@mipmap/title2"
+                    android:id="@+id/imageView3"
+                    android:layout_weight="0.69"/>
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:text="@string/title_name"
-            android:textSize="75sp"
-            android:textStyle="bold|italic"
-            android:textColor="@color/text_white"
-            android:gravity="center"
-            android:shadowColor="@color/text_blue"
-            android:shadowRadius="3.0"
-            android:shadowDx="10.0"
-            android:shadowDy="10.0"
-            android:layout_width="500sp"
-            android:layout_height="wrap_content"
-            android:id="@+id/title"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
     </RelativeLayout>
 </LinearLayout>

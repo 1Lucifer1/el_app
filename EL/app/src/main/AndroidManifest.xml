@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.el">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,28 +9,25 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mainpage" />
 
-        <activity android:name=".mainpage">
-        </activity>
-
-        <service android:name=".AudioService" ></service>
-        <service
-            android:name=".MadiaService" >
-        </service>
+        <service android:name=".AudioService" />
+        <service android:name=".MadiaService" />
 
         <activity android:name=".registerPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".creatorList"
-            android:theme="@style/CreateListStyle"></activity>
+            android:theme="@style/CreateListStyle" />
+        <activity
+            android:name=".goodsStorage"
+            android:theme="@style/CreateListStyle" />
+        <activity android:name=".gamePage"></activity>
     </application>
-
-
-
 
 </manifest>
