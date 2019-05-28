@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/player_page_content"
+    android:orientation="vertical"
+    android:background="@mipmap/main_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/startGame"
+            android:text="@string/start_game"
+            android:background="@drawable/round_button"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/text_white"
+            android:gravity="center"
+            android:shadowColor="@color/text_gray"
+            android:shadowRadius="3.0"
+            android:shadowDx="10.0"
+            android:shadowDy="10.0"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="80dp" />
+
+        <TextView
+            android:text="@string/player_money"
+            android:background="@drawable/textview_background"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/money"
+            android:textColor="@color/text_white"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:id="@+id/money"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="@string/player_name"
+                android:textColor="@color/text_white"
+                android:background="@drawable/textview_background"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/name"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/player_image"
+                android:gravity="center_horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="223dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/title1"
+                    android:id="@+id/imageView6"
+                    android:layout_weight="0.04"/>
+
+                <TextView
+                    android:text=""
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    app:srcCompat="@mipmap/title2"
+                    android:id="@+id/imageView3"
+                    android:layout_weight="0.69"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
